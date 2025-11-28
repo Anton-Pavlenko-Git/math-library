@@ -20,12 +20,13 @@ namespace math_utils {
     return a / b;
   }
   
-  inline long long power(int base, int exponent) {
+  inline int power(int base, int exponent) {
     if(base == 0)     return 0;
     if(exponent == 0) return 1;
-
-    long long result = 1;
-    for(int i = 0; i < exponent; ++i) {
+    int exp = std::abs(exponent);
+    
+    int result = 1;
+    for(int i = 0; i < exp; ++i) {
       result *= base;
     }
     return result;
