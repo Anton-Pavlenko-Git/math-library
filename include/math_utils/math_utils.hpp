@@ -15,7 +15,8 @@ namespace math_utils {
   
   inline int devide(int a, int b) {
     if(b == 0) {
-      throw std::runtime_error("Division by zero!");
+      std::cout << "Division by zero!\n";
+      return -1;
     }
     return a / b;
   }
