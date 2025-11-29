@@ -13,7 +13,7 @@ namespace math_utils {
     return a * b;
   }
   
-  inline int devide(int a, int b) {
+  inline int divide(int a, int b) {
     if(b == 0) {
       std::cout << "Division by zero!\n";
       return -1;
