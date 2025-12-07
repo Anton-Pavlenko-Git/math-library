@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.20)
 project(MathLib VERSION 1.0.0 LANGUAGES CXX)
 
+set_target_properties(calculator PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
+)
+
 add_compile_options(-Wall -Wpedantic -Werror)
 
 add_library(math_lib INTERFACE)
