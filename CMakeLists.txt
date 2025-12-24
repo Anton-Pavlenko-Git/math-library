@@ -1,20 +1,22 @@
 cmake_minimum_required(VERSION 3.20)
 project(MathLib VERSION 1.0.0 LANGUAGES CXX)
 
-set_target_properties(calculator PROPERTIES
-    CXX_STANDARD 20
-    CXX_STANDARD_REQUIRED ON
-    CXX_EXTENSIONS OFF
-)
+# Создаем INTERFACE библиотеку (header-only)
+add_library(math_utils INTERFACE)
+add_library(MathLib::math_utils ALIAS math_utils)  # Namespace для импорта
 
-add_compile_options(-Wall -Wpedantic -Werror)
+# Устанавливаем стандарт C++20 для тех кто линкуется с нами
+target_compile_features(math_utils INTERFACE cxx_std_20)
 
-add_library(math_lib INTERFACE)
-
-target_include_directories(math_lib
+# Добавляем include директорию
+target_include_directories(math_utils
     INTERFACE 
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        # $<INSTALL_INTERFACE:include>
+        $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(math_lib INTERFACE cxx_std_20)
+# Устанавливаем опции компиляции только для этой библиотеки
+target_compile_options(math_utils INTERFACE
+    -Wall
+    -Wpedantic
+)
