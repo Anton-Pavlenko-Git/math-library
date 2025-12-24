@@ -26,7 +26,7 @@ inline int power(int base, int exponent) {
     return result;
 }
 
-inline long long factorial(int n) {
+inline int factorial(int n) {
     if(n < 0) return -1;
     if(n == 0 || n == 1) return 1;
 
